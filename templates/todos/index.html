@@ -1,0 +1,233 @@
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+
+<style>
+
+	body{
+		background-color: #20263c;
+    font-family: 'Rubik', sans-serif;
+    color:white;
+	}
+
+	input{
+		width: 100%;
+		padding: 12px 20px;
+		margin: 8px 0;
+		box-sizing: border-box;
+	}
+
+	input::placeholder {
+	  color: #d3d3d3;
+	}
+
+	.submit{
+		background-color: #6BA3E8;
+	}
+
+	.center-column{
+		width:70%;
+		margin: 20px auto;
+		padding:20px;
+		background-color: #3F7AAE;
+		border-radius: 3px;
+		box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75);
+	}
+
+	.item-row{
+		background-color: #20175D;
+		margin: 10px;
+		padding: 20px;
+		border-radius: 3px;
+		color: #fff;
+		font-size: 16px;
+		box-shadow: 0px -1px 10px -4px rgba(0,0,0,0.75);
+	}
+
+	.btn-danger{
+		background-color: #ffae19;
+		border-color: #e59400;
+	}
+
+
+
+
+
+
+  .flex-header {
+    background-color: #3490ce;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  
+  .flex-main {
+    display: flex;
+    flex: 1;
+  }
+  
+  .flex-nav {
+    background-color: #629CD0;
+    
+    flex: 1 1 5rem;
+  }
+  .flex-article {
+    
+    background-color: #7E72B4;
+    padding-top: 1rem;
+    flex: 3 3;
+  }
+  
+  .flex-footer{
+    background-color: #3490ce;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  
+  @media all and (max-width: 540px) {
+    .flex-main {
+      flex-direction: column;
+    }
+  }
+
+  .border{
+    border:1px white solid;
+    padding:1em;
+    background:#2D5C87;
+  }
+  li{list-style:none;}
+
+  a{color:white;}
+
+
+</style>
+
+
+
+
+
+
+<body>
+
+
+
+
+
+
+
+
+<div class="center-column">
+
+	<form method="POST" action="/">
+		{% csrf_token %}
+		{{form.title}}
+		<input class="btn btn-info" type="submit" name="Create Task">
+	</form>
+
+
+  <div class="flex-main">
+
+
+
+    <nav class="flex-nav"> 
+
+      <div class="border">
+      <h1>Main Goals</h1>
+
+      
+      <li>Revamp Fiverr profile</li>
+      <li>Fix up old apps</li>
+
+      </div>
+
+
+
+
+
+
+      <div class="border">
+      
+      <h1>General Weekly Plans</h1> 
+      <li>Software Development</li>
+      <li>Content Creation</li>
+      <li>Tutoring/Classes</li>
+
+      </div>
+
+            <div class="border">
+
+      <h2>Before end of year(12.31.22)</h2>
+      <li>Get 300 subs on YouTube</li>
+
+ 
+      </div>
+
+     
+      
+    
+    </nav>
+    <article class="flex-article">
+      <h1>Main Content</h1>
+
+      
+        <div class="todo-list" style="width: 100%;">
+    
+          {% for task in tasks %}
+            <div class="item-row">
+              <a class="btn btn-sm btn-info" href="{% url 'update_task' task.id %}">Update</a>
+              <a class="btn btn-sm btn-warning" href="{% url 'delete' task.id %}">Delete</a>
+        
+              {% if task.complete == True %}
+              <strike>{{task}}</strike>
+              {% else %}
+              <span>{{task}}</span>
+              {% endif %}
+            </div>
+          {% endfor %}
+          </div>
+        
+      
+    
+  
+    </article>
+    <nav class="flex-nav">
+
+
+      <div class="border">
+             
+      <h2>1 year Plans-Dec 2023</h2>
+      <li>Make at least 2k/week</li> 
+      <li>Create 1 passive income stream</li>
+      <li>Have 1k subs on YouTube</li>
+      <li>Have 3+ income streams</li>
+      </div>
+
+
+      <div class="border">
+      <h2>3 year plans-Dec 2025</h2>
+      <li>Have coding/video production company</li>
+      <li>Make at least5k/week</li>
+      <li>Run own studio</li>
+      <li>Be a VFX TD</li>
+      <li>Have 100k subs</li>
+      <li>Make at least 10k/week</li>
+      <li>Have 6+ income streams</li>
+      <li>Create 3 passive income streams</li>
+      </div>
+
+  
+
+    </nav>
+  </div>
+  
+  
+  
+  
+
+
+
+
+
+</div>
+
+
+
